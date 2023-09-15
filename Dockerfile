@@ -3,7 +3,7 @@ FROM python:3.10
 WORKDIR /app 
 
 
-ADD ./model.pkl ./models.pkl
+ADD ./model.pkl ./model.pkl
 ADD ./requirements.txt ./requirements.txt
 
 RUN pip install -r requirements.txt
