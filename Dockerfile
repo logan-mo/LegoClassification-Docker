@@ -1,14 +1,8 @@
 FROM python:3.10
 
-WORKDIR /app 
-
-
-ADD ./model.pkl ./model.pkl
-ADD ./requirements.txt ./requirements.txt
-
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
-ADD app.py app.py
 
-EXPOSE 8000
-
-CMD ["uvicorn", "app:app"]
+COPY ./app ./app
+COPY ./app/model.pkl ./model.pkl
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
